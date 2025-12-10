@@ -43,6 +43,7 @@ import { Roles } from "./collections/roles/UserRoles";
 import { Library } from "./collections/Presets";
 import { Payment } from "./collections/Payment";
 import { Courier } from "./collections/Courier";
+import { SiteSetting } from "./globals/sitesetting/config";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -151,7 +152,7 @@ export default buildConfig({
     Roles,
     Library,
     Payment,
-    Courier,
+    // Courier,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [
@@ -165,6 +166,7 @@ export default buildConfig({
     InPostCourierCOD,
     // Paywalls,
     Fulfilment,
+    SiteSetting
   ],
   plugins: [
     ...plugins,

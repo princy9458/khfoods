@@ -84,7 +84,6 @@ export interface Config {
     roles: Role;
     presets: Preset;
     payment: Payment;
-    courier: Courier;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -123,7 +122,6 @@ export interface Config {
     roles: RolesSelect<false> | RolesSelect<true>;
     presets: PresetsSelect<false> | PresetsSelect<true>;
     payment: PaymentSelect<false> | PaymentSelect<true>;
-    courier: CourierSelect<false> | CourierSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -146,6 +144,7 @@ export interface Config {
     'inpost-courier': InpostCourier;
     'inpost-courier-cod': InpostCourierCod;
     fulfilment: Fulfilment;
+    sitesetting: Sitesetting;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -157,6 +156,7 @@ export interface Config {
     'inpost-courier': InpostCourierSelect<false> | InpostCourierSelect<true>;
     'inpost-courier-cod': InpostCourierCodSelect<false> | InpostCourierCodSelect<true>;
     fulfilment: FulfilmentSelect<false> | FulfilmentSelect<true>;
+    sitesetting: SitesettingSelect<false> | SitesettingSelect<true>;
   };
   locale: 'en' | 'zh';
   user:
@@ -2482,104 +2482,6 @@ export interface Payment {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "courier".
- */
-export interface Courier {
-  id: string;
-  enabled?: boolean | null;
-  settings: {
-    label: string;
-    /**
-     * You can provide typical delivery time or any other information
-     */
-    description?: string | null;
-  };
-  deliveryZones?:
-    | {
-        countries: (
-          | 'ad'
-          | 'al'
-          | 'at'
-          | 'ba'
-          | 'be'
-          | 'bg'
-          | 'by'
-          | 'ch'
-          | 'cy'
-          | 'cz'
-          | 'de'
-          | 'dk'
-          | 'ee'
-          | 'es'
-          | 'fi'
-          | 'fr'
-          | 'gb'
-          | 'gr'
-          | 'hr'
-          | 'hu'
-          | 'ie'
-          | 'is'
-          | 'it'
-          | 'li'
-          | 'lt'
-          | 'lu'
-          | 'lv'
-          | 'mc'
-          | 'md'
-          | 'me'
-          | 'mk'
-          | 'mt'
-          | 'nl'
-          | 'no'
-          | 'pl'
-          | 'pt'
-          | 'ro'
-          | 'rs'
-          | 'ru'
-          | 'se'
-          | 'si'
-          | 'sk'
-          | 'sm'
-          | 'ua'
-          | 'va'
-        )[];
-        freeShipping?:
-          | {
-              value: number;
-              currency: string;
-              id?: string | null;
-            }[]
-          | null;
-        range?:
-          | {
-              weightFrom: number;
-              weightTo: number;
-              pricing: {
-                value: number;
-                currency: string;
-                id?: string | null;
-              }[];
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  icon?: (string | null) | Media;
-  clientId?: string | null;
-  accountnumber?: string | null;
-  /**
-   * Remember to pass matching keys for choosen environment
-   */
-  APIUrl?: ('https://api-shipx-pl.easypack24.net' | 'https://apis-sandbox.fedex.com') | null;
-  shipXAPIKey?: string | null;
-  shipSecretKey?: string | null;
-  website?: (string | null) | Website;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -2813,10 +2715,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'payment';
         value: string | Payment;
-      } | null)
-    | ({
-        relationTo: 'courier';
-        value: string | Courier;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -4321,55 +4219,6 @@ export interface PaymentSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "courier_select".
- */
-export interface CourierSelect<T extends boolean = true> {
-  enabled?: T;
-  settings?:
-    | T
-    | {
-        label?: T;
-        description?: T;
-      };
-  deliveryZones?:
-    | T
-    | {
-        countries?: T;
-        freeShipping?:
-          | T
-          | {
-              value?: T;
-              currency?: T;
-              id?: T;
-            };
-        range?:
-          | T
-          | {
-              weightFrom?: T;
-              weightTo?: T;
-              pricing?:
-                | T
-                | {
-                    value?: T;
-                    currency?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
-        id?: T;
-      };
-  icon?: T;
-  clientId?: T;
-  accountnumber?: T;
-  APIUrl?: T;
-  shipXAPIKey?: T;
-  shipSecretKey?: T;
-  website?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -5139,6 +4988,121 @@ export interface Fulfilment {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sitesetting".
+ */
+export interface Sitesetting {
+  id: string;
+  logo?: (string | null) | Media;
+  logoLight?: (string | null) | Media;
+  logoDark?: (string | null) | Media;
+  favicon?: (string | null) | Media;
+  logoWidth?: number | null;
+  logoHeight?: number | null;
+  /**
+   * Main brand color
+   */
+  primaryColor?: string | null;
+  primaryHover?: string | null;
+  primaryLight?: string | null;
+  secondaryColor?: string | null;
+  secondaryHover?: string | null;
+  secondaryLight?: string | null;
+  tertiaryColor?: string | null;
+  tertiaryHover?: string | null;
+  tertiaryLight?: string | null;
+  backgroundColor?: string | null;
+  backgroundSecondary?: string | null;
+  backgroundTertiary?: string | null;
+  textPrimary?: string | null;
+  textSecondary?: string | null;
+  textMuted?: string | null;
+  textLink?: string | null;
+  textLinkHover?: string | null;
+  successColor?: string | null;
+  warningColor?: string | null;
+  errorColor?: string | null;
+  infoColor?: string | null;
+  customColors?:
+    | {
+        name: string;
+        value: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  borderColor?: string | null;
+  shadowColor?: string | null;
+  /**
+   * Main font for body text
+   */
+  fontPrimary?: string | null;
+  /**
+   * Font for headings or special text
+   */
+  fontSecondary?: string | null;
+  /**
+   * Font for code blocks
+   */
+  fontMonospace?: string | null;
+  fontSizeBase?: number | null;
+  fontSizeH1?: number | null;
+  fontSizeH2?: number | null;
+  fontSizeH3?: number | null;
+  fontSizeH4?: number | null;
+  fontSizeH5?: number | null;
+  fontSizeH6?: number | null;
+  fontSizeSmall?: number | null;
+  fontSizeLarge?: number | null;
+  fontWeightLight?: number | null;
+  fontWeightNormal?: number | null;
+  fontWeightMedium?: number | null;
+  fontWeightSemibold?: number | null;
+  fontWeightBold?: number | null;
+  lineHeightBase?: number | null;
+  lineHeightHeading?: number | null;
+  letterSpacingNormal?: string | null;
+  letterSpacingWide?: string | null;
+  attribution?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  navItems?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  createdBy: string | Administrator;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -5434,6 +5398,89 @@ export interface FulfilmentSelect<T extends boolean = true> {
         email?: T;
         phone?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sitesetting_select".
+ */
+export interface SitesettingSelect<T extends boolean = true> {
+  logo?: T;
+  logoLight?: T;
+  logoDark?: T;
+  favicon?: T;
+  logoWidth?: T;
+  logoHeight?: T;
+  primaryColor?: T;
+  primaryHover?: T;
+  primaryLight?: T;
+  secondaryColor?: T;
+  secondaryHover?: T;
+  secondaryLight?: T;
+  tertiaryColor?: T;
+  tertiaryHover?: T;
+  tertiaryLight?: T;
+  backgroundColor?: T;
+  backgroundSecondary?: T;
+  backgroundTertiary?: T;
+  textPrimary?: T;
+  textSecondary?: T;
+  textMuted?: T;
+  textLink?: T;
+  textLinkHover?: T;
+  successColor?: T;
+  warningColor?: T;
+  errorColor?: T;
+  infoColor?: T;
+  customColors?:
+    | T
+    | {
+        name?: T;
+        value?: T;
+        description?: T;
+        id?: T;
+      };
+  borderColor?: T;
+  shadowColor?: T;
+  fontPrimary?: T;
+  fontSecondary?: T;
+  fontMonospace?: T;
+  fontSizeBase?: T;
+  fontSizeH1?: T;
+  fontSizeH2?: T;
+  fontSizeH3?: T;
+  fontSizeH4?: T;
+  fontSizeH5?: T;
+  fontSizeH6?: T;
+  fontSizeSmall?: T;
+  fontSizeLarge?: T;
+  fontWeightLight?: T;
+  fontWeightNormal?: T;
+  fontWeightMedium?: T;
+  fontWeightSemibold?: T;
+  fontWeightBold?: T;
+  lineHeightBase?: T;
+  lineHeightHeading?: T;
+  letterSpacingNormal?: T;
+  letterSpacingWide?: T;
+  attribution?: T;
+  navItems?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  createdBy?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

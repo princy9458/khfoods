@@ -33,7 +33,8 @@ const testimonials = [
     name: "Gitfon C.",
     role: "Gitfon C.",
     image: "/assets/users/user3.jpg",
-    message: "I have been a loyal fan for years. They are the best peanuts I’ve ever had.",
+    message:
+      "I have been a loyal fan for years. They are the best peanuts I’ve ever had.",
     rating: 5,
   },
   {
@@ -51,12 +52,14 @@ const TestimonialsSection = () => {
   return (
     <section className="py-20 bg-[#f6f3ec]">
       <div className="px-6 max-w-7xl mx-auto">
-        <h2 className="text-4xl font-semibold text-center mb-14 text-dark">
-         Testimonials 
+        <h5 className="text-2xl font-semibold text-[#8d5c29] text-center ">
+          Testimonials
+        </h5>
+        <h2 className="text-4xl font-semibold  text-[#8d5c29]  text-center mb-14">
+          We love our clients
         </h2>
-{/* <span className="text-primary">About Us</span>  */}
+        {/* <span className="text-primary">About Us</span>  */}
         <div className="relative">
-
           {/* LEFT ARROW */}
           <button className="custom-prev absolute -left-6 top-1/2 -translate-y-1/2 bg-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-black hover:text-white transition-all z-10">
             <ChevronLeft className="w-6 h-6" />
@@ -76,44 +79,45 @@ const TestimonialsSection = () => {
             spaceBetween={35}
             breakpoints={{
               0: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 2 },
+              768: { slidesPerView: 1 },
+              1024: { slidesPerView: 1 },
             }}
           >
             {testimonials.map((item) => (
               <SwiperSlide key={item.id}>
                 <div
-                  className="bg-white rounded-2xl my-6 p-8 shadow-none border border-transparent hover:border-brown
-                    h-[420px] transition-all hover:shadow-none flex flex-col"
+                  className="bg-[#eaba88] rounded-2xl my-6 p-8 shadow-none border border-transparent hover:border-brown
+                    h-[420px] transition-all hover:shadow-none flex flex-col items-center justify-center"
                 >
                   {/* IMAGE */}
-                  <div className="flex justify-center mb-4">
+                  {/* <div className="flex justify-center mb-4">
                     <img
                       src={item.image}
                       alt={item.name}
                       className="w-20 h-20 rounded-full object-cover border-2 border-primary"
                     />
-                  </div>
+                  </div> */}
 
                   {/* NAME */}
-                  <h3 className="text-xl font-bold text-center text-black">
-                    {item.name}
-                  </h3>
 
                   {/* RATING */}
-                  <div className="flex justify-center gap-1 my-3">
+                  {/* <div className="flex justify-center gap-1 my-3">
                     {[...Array(item.rating)].map((_, i) => (
                       <Star
                         key={i}
                         className="w-5 h-5 text-primary fill-priamry"
                       />
                     ))}
-                  </div>
+                  </div> */}
 
                   {/* MESSAGE */}
-                  <p className="text-gray-700 text-center mt-4 leading-relaxed">
+                  <p className="text-[#8d5c29]  text-center mt-4 leading-relaxed">
                     "{item.message}"
                   </p>
+
+                  <h3 className="text-xl  text-[#8d5c29]  font-bold text-center text-black">
+                    {item.name}
+                  </h3>
                 </div>
               </SwiperSlide>
             ))}
@@ -130,7 +134,7 @@ const TestimonialsSection = () => {
 export default TestimonialsSection;
 
 // CUSTOM DOT STYLES
-<style >{`
+<style>{`
   .custom-dots .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
@@ -146,4 +150,4 @@ export default TestimonialsSection;
     background: #DEBB70;
     opacity: 1;
   }
-`}</style>
+`}</style>;

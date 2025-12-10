@@ -24,6 +24,7 @@ const LoginPage = async ({
   }
   const shopSettings = await getCachedGlobal("shopSettings", locale, 1)();
 
+
   return shopSettings.enableOAuth ? <></> : <LoginPageWithoutOAuth verified={verified} />;
 };
 export default LoginPage;

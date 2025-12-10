@@ -11,10 +11,9 @@ import {
 } from "lucide-react";
 import React from "react";
 import { MdLockOutline } from "react-icons/md";
- 
+
 const page = () => {
- 
-     const features = [
+  const features = [
     {
       icon: <Truck size={32} />,
       title: "Free Shipping",
@@ -36,7 +35,7 @@ const page = () => {
       subtitle: "Premium quality & trusted service",
     },
   ];
- 
+
   const services = [
     {
       id: 1,
@@ -84,7 +83,7 @@ const page = () => {
               natural ingredients and honest roasting.
             </p>
           </div>
- 
+
           <div className="mt-10 flex-1 lg:mt-0 lg:flex lg:justify-end">
             <div className="relative w-full max-w-xs">
               <div className="aspect-[4/5] w-full rounded-[40%_60%_55%_45%] border-[6px] border-white/90 bg-[url('/assets/Image/khfoodImage/Image-2.jpg')] bg-cover bg-center shadow-2xl" />
@@ -92,7 +91,7 @@ const page = () => {
           </div>
         </div>
       </section>
- 
+
       {/* Brand story */}
       <section className="py-14">
         <div className="mx-auto max-w-6xl px-4 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
@@ -100,10 +99,11 @@ const page = () => {
             <div className="w-full  max-w-xl">
               <img
                 src="/assets/Image/khfoodImage/Image-4.jpg"
-                className="h-[400px] rounded-2xl"></img>
+                className="h-[400px] rounded-2xl"
+              ></img>
             </div>
           </div>
- 
+
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#b86823]">
               About KH Food
@@ -131,7 +131,7 @@ const page = () => {
           </div>
         </div>
       </section>
- 
+
       {/* Timeline */}
       <section className="bg-light-dark py-20">
         <div className="mx-auto max-w-6xl px-4">
@@ -144,33 +144,34 @@ const page = () => {
               is today.
             </p>
           </div>
- 
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="relative p-10 rounded-xl border bg-white border-[#E5E5E5] shadow-md transition-all hover:shadow-xl overflow-hidden">
+                className="relative p-10 rounded-xl border bg-white border-[#E5E5E5] shadow-md transition-all hover:shadow-xl overflow-hidden"
+              >
                 {/* Card Number (Faint background text) */}
                 <h1 className="absolute bottom-4 right-6 text-8xl font-bold text-[#8C2C1A] opacity-10 select-none">
                   {service.number}
                 </h1>
- 
+
                 {/* Icon */}
                 <div className="mb-6 ">{service.icon}</div>
- 
+
                 {/* Title */}
                 <h3 className="text-lg font-bold text-[#8C2C1A] tracking-wider mb-3 uppercase">
                   {service.title}
                 </h3>
- 
+
                 {/* Divider */}
                 <div className="h-1 w-20 bg-[#8C2C1A] mb-6"></div>
- 
+
                 {/* Description */}
                 <p className="text-[#5A3A18] leading-relaxed mb-8">
                   {service.description}
                 </p>
- 
+
                 {/* Button */}
                 {/* <button className="px-6 py-2  text-dark rounded-md font-normal border border-[#8C2C1A] tracking-wide hover:bg-dark transition">
                 {service.button}
@@ -180,32 +181,29 @@ const page = () => {
           </div>
         </div>
       </section>
- 
+
       {/* Values */}
       <div className="w-full bg-white py-16">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
- 
-        {features.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center text-center p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_28px_rgba(0,0,0,0.12)] transition-all duration-300 bg-white"
-          >
-            <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[#F4E5D2] text-[#8C2C1A] mb-4 shadow">
-              {item.icon}
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {features.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_28px_rgba(0,0,0,0.12)] transition-all duration-300 bg-white"
+            >
+              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[#F4E5D2] text-[#8C2C1A] mb-4 shadow">
+                {item.icon}
+              </div>
+
+              <h3 className="text-xl font-semibold text-gray-800">
+                {item.title}
+              </h3>
+
+              <p className="text-gray-500 mt-1 text-sm">{item.subtitle}</p>
             </div>
- 
-            <h3 className="text-xl font-semibold text-gray-800">
-              {item.title}
-            </h3>
- 
-            <p className="text-gray-500 mt-1 text-sm">{item.subtitle}</p>
-          </div>
-        ))}
- 
+          ))}
+        </div>
       </div>
-    </div>
- 
- 
+
       {/* CTA */}
       <section className="bg-[#f6efe1] py-20 text-dark">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-4 md:flex-row md:items-center">
@@ -220,7 +218,8 @@ const page = () => {
           </div>
           <a
             href="/products"
-            className="inline-flex items-center justify-center rounded-md bg-[#ffb057] px-5 py-2 text-base font-semibold text-[#2c1607] shadow-xl transition hover:-translate-y-0.5 hover:bg-[#ffc275] hover:shadow-2xl">
+            className="inline-flex items-center justify-center rounded-md bg-[#ffb057] px-5 py-2 text-base font-semibold text-[#2c1607] shadow-xl transition hover:-translate-y-0.5 hover:bg-[#ffc275] hover:shadow-2xl"
+          >
             Shop Peanuts
           </a>
         </div>
@@ -228,5 +227,5 @@ const page = () => {
     </div>
   );
 };
- 
+
 export default page;

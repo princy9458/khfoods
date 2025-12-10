@@ -1,17 +1,23 @@
-import AboutSection from "@/frontendComponents/Aboutus";
-import FeaturedWorks from "@/frontendComponents/FeaturedWorks";
-import Hero from "@/frontendComponents/Hero";
-import NewsLatter from "@/frontendComponents/NewsLatter";
-import NewsSection from "@/frontendComponents/NewsSection";
-import OurWork from "@/frontendComponents/OurWork";
-import ProductSection from "@/frontendComponents/ProductSection";
-import SliderBrand from "@/frontendComponents/SliderBrand";
-import TestimonialsSection from "@/frontendComponents/TestimonialsSection";
-
+import AboutSection from "@/frontendComponents/Home/Aboutus";
+import FeaturedWorks from "@/frontendComponents/Home/FeaturedWorks";
+import Hero from "@/frontendComponents/Home/Hero";
+import NewsLatter from "@/frontendComponents/Home/NewsLatter";
+import NewsSection from "@/frontendComponents/Home/NewsSection";
+import OurWork from "@/frontendComponents/Home/OurWork";
+import ProductSection from "@/frontendComponents/Home/ProductSection";
+import SliderBrand from "@/frontendComponents/Home/SliderBrand";
+import TestimonialsSection from "@/frontendComponents/Home/TestimonialsSection";
+import { getCachedGlobal } from "@/utilities/getGlobals";
 
 export const dynamic = "force-dynamic";
 
-const HomePage = () => {
+const HomePage = async () => {
+  const data = await getCachedGlobal("sitesetting", "en", 1);
+
+  const d = await data()
+
+  // console.log(d)
+
   return (
     <main>
       {/* <HeroSection/> */}
@@ -19,7 +25,7 @@ const HomePage = () => {
 
       <AboutSection />
       <OurWork />
-      <FeaturedWorks />
+      {/* <FeaturedWorks /> */}
 
       {/* <FeaturedProjects /> */}
       <ProductSection />

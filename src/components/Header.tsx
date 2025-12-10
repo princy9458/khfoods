@@ -10,7 +10,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname, Link } from "@/i18n/routing";
 
 
-const HeaderMinor = () => {
+const HeaderMinor = ({logourl}:any) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -125,7 +125,7 @@ const HeaderMinor = () => {
           {/* LOGO */}
           <Link href="/">
             <img
-              src="/assets/Image/khfoodImage/khfood_logo.png"
+              src={logourl.url}
               className="w-32 h-auto"
               alt="KH Food Logo"
             />

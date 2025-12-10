@@ -19,6 +19,7 @@ import {
   Search,
   SendIcon,
   Settings,
+  Settings2,
   ShieldUserIcon,
   Star,
   TagIcon,
@@ -64,7 +65,9 @@ export const navIconMap: Partial<Record<CollectionSlug | GlobalSlug | ExtraNavKe
   websites: Monitor,
   presets: FilePlus,
   "websites/create": LayoutTemplate,
-  // permission: UserCheck
+  // permission: UserCheck,
+  "payment":CircleDollarSign,
+  sitesetting: Settings2
 };
 
 export const getNavIcon = (slug: string) =>
