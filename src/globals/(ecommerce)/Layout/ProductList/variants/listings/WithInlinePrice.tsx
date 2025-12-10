@@ -9,6 +9,7 @@ import { getPriceRange } from "@/utilities/getPriceRange";
 
 export const WithInlinePrice = ({ products }: { products: Product[] }) => {
   const t = useTranslations("ProductList");
+
   return (
     <>
       {products.map((product) => {
@@ -39,7 +40,7 @@ export const WithInlinePrice = ({ products }: { products: Product[] }) => {
               />
               <div className="mt-4 flex justify-between">
                 <div className="w-3/5">
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-sm text-gray-700 1">
                     <Link href={`/product/${product.slug}`}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.title}
