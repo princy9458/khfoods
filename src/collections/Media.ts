@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import {
   FixedToolbarFeature,
   InlineToolbarFeature,
-  lexicalEditor
+  lexicalEditor,
 } from "@payloadcms/richtext-lexical";
 
 import { anyone } from "@/access/anyone";
@@ -20,12 +20,13 @@ const dirname = path.dirname(filename);
 
 const isReadAccess = async (args: AccessArgs<Administrator>) => {
   const base = await checkUserPermission(args, "read", "mediaPermission");
-  if (base === true  &&args.req?.user?.collection === "administrators" && args.req?.user?.id) {
+  if (
+    base === true &&
+    args.req?.user?.collection === "administrators" &&
+    args.req?.user?.id
+  ) {
     return {
-      and: [
-        base,
-        { createdBy: { equals: args.req.user.id } }
-      ]
+      and: [base, { createdBy: { equals: args.req.user.id } }],
     };
   }
   return base;
@@ -46,25 +47,27 @@ export const Media: CollectionConfig = {
   labels: {
     singular: {
       en: "Media",
-      zh: "媒体"
+      zh: "媒体",
     },
     plural: {
       en: "Media",
-      zh: "媒体"
-    }
+      zh: "媒体",
+    },
   },
   admin: {
     group: {
-      en: "Page Settings"
-
-    }
+      en: "Page Settings",
+    },
+  },
+  access: {
+    read: () => true,
   },
   fields: [
     {
       name: "alt",
       type: "text",
       required: true,
-      localized: true
+      localized: true,
     },
     {
       name: "caption",
@@ -76,11 +79,11 @@ export const Media: CollectionConfig = {
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ];
-        }
+        },
       }),
-      localized: true
+      localized: true,
     },
-      {
+    {
       name: "createdBy",
       type: "relationship",
       relationTo: "administrators",
@@ -88,10 +91,9 @@ export const Media: CollectionConfig = {
       defaultValue: ({ req: { user } }) => user?.id,
       admin: {
         readOnly: true,
-        position: "sidebar"
-      }
+        position: "sidebar",
+      },
     },
-
   ],
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
@@ -101,35 +103,35 @@ export const Media: CollectionConfig = {
     imageSizes: [
       {
         name: "thumbnail",
-        width: 300
+        width: 300,
       },
       {
         name: "square",
         width: 500,
-        height: 500
+        height: 500,
       },
       {
         name: "small",
-        width: 600
+        width: 600,
       },
       {
         name: "medium",
-        width: 900
+        width: 900,
       },
       {
         name: "large",
-        width: 1400
+        width: 1400,
       },
       {
         name: "xlarge",
-        width: 1920
+        width: 1920,
       },
       {
         name: "og",
         width: 1200,
         height: 630,
-        crop: "center"
+        crop: "center",
       },
-    ]
-  }
+    ],
+  },
 };
