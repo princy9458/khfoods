@@ -2161,6 +2161,7 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
+  Highlight?: string | null;
   enableVariants?: boolean | null;
   /**
    * If false, price is in Product Details
@@ -4031,6 +4032,7 @@ export interface ProductsSelect<T extends boolean = true> {
         content?: T;
         id?: T;
       };
+  Highlight?: T;
   enableVariants?: T;
   enableVariantPrices?: T;
   enableVariantWeights?: T;
