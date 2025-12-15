@@ -142,7 +142,6 @@ export interface Config {
     emailMessages: EmailMessage;
     shopSettings: ShopSetting;
     shopLayout: ShopLayout;
-    'inpost-pickup': InpostPickup;
     'inpost-courier': InpostCourier;
     'inpost-courier-cod': InpostCourierCod;
     fulfilment: Fulfilment;
@@ -154,7 +153,6 @@ export interface Config {
     emailMessages: EmailMessagesSelect<false> | EmailMessagesSelect<true>;
     shopSettings: ShopSettingsSelect<false> | ShopSettingsSelect<true>;
     shopLayout: ShopLayoutSelect<false> | ShopLayoutSelect<true>;
-    'inpost-pickup': InpostPickupSelect<false> | InpostPickupSelect<true>;
     'inpost-courier': InpostCourierSelect<false> | InpostCourierSelect<true>;
     'inpost-courier-cod': InpostCourierCodSelect<false> | InpostCourierCodSelect<true>;
     fulfilment: FulfilmentSelect<false> | FulfilmentSelect<true>;
@@ -4767,104 +4765,6 @@ export interface ShopLayout {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "inpost-pickup".
- */
-export interface InpostPickup {
-  id: string;
-  enabled?: boolean | null;
-  settings: {
-    label: string;
-    /**
-     * You can provide typical delivery time or any other information
-     */
-    description?: string | null;
-  };
-  deliveryZones?:
-    | {
-        countries: (
-          | 'ad'
-          | 'al'
-          | 'at'
-          | 'ba'
-          | 'be'
-          | 'bg'
-          | 'by'
-          | 'ch'
-          | 'cy'
-          | 'cz'
-          | 'de'
-          | 'dk'
-          | 'ee'
-          | 'es'
-          | 'fi'
-          | 'fr'
-          | 'gb'
-          | 'gr'
-          | 'hr'
-          | 'hu'
-          | 'ie'
-          | 'is'
-          | 'it'
-          | 'li'
-          | 'lt'
-          | 'lu'
-          | 'lv'
-          | 'mc'
-          | 'md'
-          | 'me'
-          | 'mk'
-          | 'mt'
-          | 'nl'
-          | 'no'
-          | 'pl'
-          | 'pt'
-          | 'ro'
-          | 'rs'
-          | 'ru'
-          | 'se'
-          | 'si'
-          | 'sk'
-          | 'sm'
-          | 'ua'
-          | 'va'
-          | 'us'
-          | 'cn'
-        )[];
-        freeShipping?:
-          | {
-              value: number;
-              currency: string;
-              id?: string | null;
-            }[]
-          | null;
-        range?:
-          | {
-              weightFrom: number;
-              weightTo: number;
-              pricing: {
-                value: number;
-                currency: string;
-                id?: string | null;
-              }[];
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  icon?: (string | null) | Media;
-  clientId?: string | null;
-  /**
-   * Remember to pass matching keys for choosen environment
-   */
-  APIUrl?: ('https://api-shipx-pl.easypack24.net' | 'https://sandbox-api-shipx-pl.easypack24.net') | null;
-  shipXAPIKey?: string | null;
-  geowidgetToken?: string | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "inpost-courier".
  */
 export interface InpostCourier {
@@ -5375,54 +5275,6 @@ export interface ShopLayoutSelect<T extends boolean = true> {
               content?: T;
             };
       };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "inpost-pickup_select".
- */
-export interface InpostPickupSelect<T extends boolean = true> {
-  enabled?: T;
-  settings?:
-    | T
-    | {
-        label?: T;
-        description?: T;
-      };
-  deliveryZones?:
-    | T
-    | {
-        countries?: T;
-        freeShipping?:
-          | T
-          | {
-              value?: T;
-              currency?: T;
-              id?: T;
-            };
-        range?:
-          | T
-          | {
-              weightFrom?: T;
-              weightTo?: T;
-              pricing?:
-                | T
-                | {
-                    value?: T;
-                    currency?: T;
-                    id?: T;
-                  };
-              id?: T;
-            };
-        id?: T;
-      };
-  icon?: T;
-  clientId?: T;
-  APIUrl?: T;
-  shipXAPIKey?: T;
-  geowidgetToken?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

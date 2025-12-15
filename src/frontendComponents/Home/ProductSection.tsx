@@ -176,8 +176,7 @@ function ProductListing({ type, catType }: { type: string; catType: string }) {
 function ProductCard({ product }: { product: Product }) {
   // Get the first image from the product
   const productImage = product.images?.[0] || null;
-   
-  console.log("product")
+
   return (
     <Link href={`/product/${product.slug}`} prefetch={true} className="block h-full">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col hover:shadow-xl transition-shadow duration-300 cursor-pointer">
@@ -211,6 +210,7 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Content Section */}
+           <Link href={`/product/${product.slug}`} prefetch={true} className="block h-full">
         <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-lg font-bold text-gray-900 mb-1">
           {product.title}
@@ -235,6 +235,7 @@ function ProductCard({ product }: { product: Product }) {
           </span>
         </div>
         </div>
+        </Link>
       </div>
     </Link>
   );

@@ -21,7 +21,7 @@ type Props = {
 };
 
 const collectionOrder: string[] = [
-  "Website Management",
+  // "Website Management",
   "Customer Management",
   "Products",
   "Orders",

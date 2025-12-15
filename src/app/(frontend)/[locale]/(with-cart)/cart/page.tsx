@@ -11,11 +11,12 @@ import { QuantityInput } from "@/components/(ecommerce)/QuantityInput";
 import { Media as MediaComponent } from "@/components/Media";
 import { type FilledVariant } from "@/globals/(ecommerce)/Layout/ProductDetails/types";
 import { type Locale } from "@/i18n/config";
-import { Link } from "@/i18n/routing";
-import { type Media, type Product } from "@/payload-types";
+import { Link, useRouter } from "@/i18n/routing";
+import { Customer, type Media, type Product } from "@/payload-types";
 import { useCart } from "@/stores/CartStore";
 import { type Cart } from "@/stores/CartStore/types";
 import { type Currency } from "@/stores/Currency/types";
+import useUserStore from "@/stores/UserStore";
 
 export type ProductWithFilledVariants = Omit<Product, "variants" | "pricing"> & {
   variant: FilledVariant | undefined;
@@ -31,6 +32,9 @@ export type ProductWithFilledVariants = Omit<Product, "variants" | "pricing"> & 
 const CartPage = () => {
   const { cart, updateCart, setCart, removeFromCart } = useCart();
 
+  const { setUser, user, isAuthenticated } = useUserStore();
+  const router = useRouter();
+  const isLoggedIn = isAuthenticated();
   const [cartProducts, setCartProducts] = useState<ProductWithFilledVariants[]>([]);
   const [total, setTotal] = useState<
     {
@@ -72,6 +76,19 @@ const CartPage = () => {
     void debouncedFetchCartProducts(cart);
   }, [cart, debouncedFetchCartProducts]);
 
+  useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const { data } = await axios.get("/next/me");
+        const custdata:Customer=data.user
+        setUser(custdata);
+      } catch {
+        setUser(null);
+      }
+    };
+    void loadUser();
+  }, [setUser]);
+
   const setCartQuantity = (quantity: number, productID: string, productVariantSlug: string | undefined) => {
     setCart([
       ...(cart?.filter((cartProduct) => cartProduct.id !== productID) ?? []),
@@ -91,6 +108,18 @@ const CartPage = () => {
         choosenVariantSlug: productVariantSlug
       },
     ]);
+  };
+
+
+  console.log("isLoggedIn---", user)
+  const handleCheckOut = () => {
+      console.log("useee---", user)
+        console.log("isLoggedIn---", user)
+    if (!isLoggedIn) {
+      router.push("/login");
+      return;
+    }
+    router.push("/checkout");
   };
 
   return (
@@ -288,13 +317,18 @@ const CartPage = () => {
             </dl>
 
             <div className="mt-6">
-              <Link
-                href="/checkout"
-                prefetch={true}
-                className="w-full rounded-md border border-transparent bg-main-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-main-700 focus:outline-hidden focus:ring-2 focus:ring-main-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+              <button
+                // href="/checkout"
+                // prefetch={true}
+                onClick={handleCheckOut}
+                disabled={!isLoggedIn}
+                className="w-full rounded-md border border-transparent bg-main-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-main-700 focus:outline-hidden focus:ring-2 focus:ring-main-500 focus:ring-offset-2 focus:ring-offset-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {t("checkout")}
-              </Link>
+              </button>
+              {!isLoggedIn && (
+                <p className="mt-2 text-sm text-gray-600">Please log in to proceed to checkout.</p>
+              )}
             </div>
 
             <div className="mt-6 text-center text-sm">
