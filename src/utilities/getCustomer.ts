@@ -10,7 +10,6 @@ export const getCustomer = async () => {
   const headers = await getHeaders();
   const cookieStore = await cookies();
   const cookieString = cookieStore.toString();
-
   const customer = await unstable_cache(
     async () => {
       try {

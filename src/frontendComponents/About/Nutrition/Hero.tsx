@@ -33,7 +33,7 @@ export const HeroSection = async ({ category, subcategory }: Heroprops) => {
             >
               <li>
                 <Link
-                  href={`/category/${category.slug}`}
+                  href={`/our-products/${category.slug}`}
                   className="text-amber-300 hover:text-amber-200 uppercase tracking-widest font-light"
                 >
                   {t("products")} / {category.title}

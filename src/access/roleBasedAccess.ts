@@ -14,10 +14,21 @@ interface CacheEntry {
 }
 
 export const checkUserPermission = async (
-  { req: { user, payload } }: AccessArgs<Administrator>,
+  { req }: AccessArgs<Administrator>,
   requiredPermission: "read" | "create" | "update" | "delete",
   permissionField: string
 ) => {
+  const { user, payload, url } = req;
+
+  // Skip permission checks on login routes to avoid blocking authentication
+  if (url?.includes("/login")) {
+    return true;
+  }
+
+  // Customers should not go through admin role checks
+  if (user?.collection === "customers") {
+    return true;
+  }
  // console.log("user", user)
   if (!user?.id) {
     // Allow public read access for static generation

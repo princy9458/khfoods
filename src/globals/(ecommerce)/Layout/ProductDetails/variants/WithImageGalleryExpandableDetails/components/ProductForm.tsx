@@ -30,7 +30,7 @@ export const ProductForm = ({
   minQuantity: number;
   maxQuantity: number;
 }) => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { updateCart, updatecartQuantity, cart } = useCart();
 
   const defaultVariant =

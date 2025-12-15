@@ -60,7 +60,7 @@ export const navIconMap: Partial<Record<CollectionSlug | GlobalSlug | ExtraNavKe
   shopLayout: PanelsTopLeft,
   "inpost-courier-cod": TruckIcon,
   "inpost-courier": TruckIcon,
-  "inpost-pickup": BoxesIcon,
+  // "inpost-pickup": BoxesIcon,
   // paywalls: CircleDollarSign,
   websites: Monitor,
   // presets: FilePlus,

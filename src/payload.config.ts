@@ -164,7 +164,7 @@ export default buildConfig({
     EmailMessages,
     ShopSettings,
     ShopLayout,
-    InPostPickup,
+  // InPostPickup,
     InPostCourier,
     InPostCourierCOD,
     // Paywalls,

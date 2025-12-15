@@ -28,7 +28,10 @@ export const InPostPickup: GlobalConfig = {
             en: "Parcel lockers 24/7"
 
           },
-          fields: courierFields
+          fields: courierFields,  
+           admin: {
+            hidden: true
+          }
         },
 
         {

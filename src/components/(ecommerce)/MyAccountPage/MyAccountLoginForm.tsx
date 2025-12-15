@@ -21,6 +21,7 @@ type LoginFormData = {
 export const MyAccountLoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const t = useTranslations("LoginForm");
   const tErrors = useTranslations("LoginForm.errors");
   const router = useRouter();
@@ -51,14 +52,15 @@ export const MyAccountLoginForm = () => {
       form.setError("password", { message: tErrors("password") });
       return;
     }
-  console.log("values---", values)
+ 
+    setIsLoading(true);
     try {
       const res = await axios.post("/api/customers/login", values);
-      console.log("login customer-----> ", res)
+      console.log(" ge user response", res)
       if (res.status === 200 || res.status === 201) {
-        void synchronizeCart();
+       // void synchronizeCart();
         router.replace("/account/orders");
-        router.refresh();
+        // router.refresh();
       }
     } catch (error) {
       if (isAxiosError(error)) {
@@ -71,6 +73,8 @@ export const MyAccountLoginForm = () => {
         console.log(error);
         form.setError("root", { message: t("errors.server-error") });
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -132,9 +136,17 @@ export const MyAccountLoginForm = () => {
 
         <Button 
           type="submit" 
-          className="bg-gray-900 hover:bg-black text-white py-3 rounded-sm font-medium h-12"
+          disabled={isLoading}
+          className="bg-gray-900 hover:bg-black text-white py-3 rounded-sm font-medium h-12 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Log in
+          {isLoading ? (
+            <div className="flex items-center justify-center gap-2">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+              <span>Logging in...</span>
+            </div>
+          ) : (
+            "Log in"
+          )}
         </Button>
 
         <div className="flex items-center space-x-2">

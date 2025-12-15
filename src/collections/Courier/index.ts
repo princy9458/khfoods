@@ -25,7 +25,10 @@ export const Courier: CollectionConfig = {
             en: "InPost Courier"
 
           },
-          fields: courierFields
+          fields: courierFields,
+          admin: {
+            hidden: true
+          }
         },
         {
           label: {
