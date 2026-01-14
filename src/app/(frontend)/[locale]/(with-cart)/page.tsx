@@ -9,7 +9,9 @@ export const dynamic = "force-dynamic";
 
 const Home=()=>{
 return(
-     <HomePage/>
+     <>
+  <HomePage/>
+     </>
 )
  
 }

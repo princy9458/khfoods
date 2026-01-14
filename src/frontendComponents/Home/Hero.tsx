@@ -1,41 +1,118 @@
 "use client";
-import React from "react";
-import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
-const Hero = () => {
-  const t = useTranslations("Home.hero");
-
+export default function Hero() {
   return (
-    <section className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative w-full md:h-[100svh] h-[100svh] overflow-hidden font-sans">
       {/* Background Video */}
       <video
-        className="absolute w-full h-full object-cover"
-        src="/assets/Image/khfoodImage/IMG_5385.mov" // <-- replace with your video path
+        className="absolute inset-0 w-full h-full object-cover"
+        src="./assets/Image/khfoodImage/IMG_5385.mov" // better to use local video
         autoPlay
-        muted
         loop
+        muted
+        playsInline
       />
 
-      {/* Overlay */}
-      <div className="absolute w-full h-full bg-black/50"></div>
+      {/* Dark Overlay - Increased opacity slightly to make white text pop like the image */}
+      <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <p className="text-white text-lg mb-10 tracking-[8px] border-b">{t("presents")}</p>
-        <h1 className="text-white text-4xl md:text-6xl font-bold mb-6">
-          {t("title")}
-        </h1>
-        <div className="flex gap-4 pt-10">
-          <button className="bg-[#d4a762] text-white py-2 px-6 rounded hover:opacity-90 transition">
-            {t("shop-now")}
-          </button>
-          <button className="border border-white text-white py-2 px-6 rounded hover:bg-white hover:text-black transition">
-            {t("contact-us")}
-          </button>
-        </div>
+      {/* CENTER TEXT CONTAINER (New wrapper to center both texts together) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full px-4 z-20">
+        
+        {/* --- NEW: SUBTITLE WITH LINES --- */}
+        <motion.div
+           initial={{ opacity: 0, y: 25 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 1, delay: 0.2 }} // Slight delay before title starts
+           className="flex items-center gap-3 sm:gap-6 mb-2 sm:mb-4 opacity-90"
+        >
+          {/* Left Line */}
+          <div className="h-[1px] w-12 sm:w-24 bg-white"></div>
+          
+          <p className="text-white uppercase tracking-[0.2em] text-xs sm:text-sm md:text-base font-semibold text-center whitespace-nowrap">
+            KHFOOD PRESENTS
+          </p>
+          
+          {/* Right Line */}
+          <div className="h-[1px] w-12 sm:w-24 bg-white"></div>
+        </motion.div>
+
+
+        {/* --- MODIFIED MAIN TITLE --- */}
+        <motion.h1
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          // Updated classes for solid white, bold text like the image
+          className="
+            text-[42px] sm:text-[60px] md:text-[80px] lg:text-[100px]
+            font-extrabold 
+            text-white 
+            uppercase
+            whitespace-nowrap
+            leading-none
+            text-center
+          "
+          // REMOVED THE WEBKIT STROKE STYLE
+        >
+          BEST PEANUTS ON EARTH
+        </motion.h1>
+      </div>
+
+
+      {/* Bottom Content (Unchanged) */}
+      <div
+        className="
+          absolute bottom-8 sm:bottom-12 md:bottom-16
+          w-full px-5 sm:px-10
+          flex flex-col md:flex-row
+          gap-6 md:gap-0
+          justify-between items-start md:items-end
+          z-20
+        "
+      >
+        {/* Left Title (Empty placeholder as in your original code) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="text-white max-w-lg"
+        >
+        </motion.div>
+
+        {/* Right Button (Unchanged) */}
+        <motion.a
+          href="#shop"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="
+            bg-white text-black
+            px-5 sm:px-6 py-2.5 sm:py-3
+            rounded-md shadow font-semibold
+            flex items-center gap-2
+            hover:bg-gray-100 transition
+            text-sm sm:text-base
+          "
+        >
+          SHOP NOW
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </motion.a>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
