@@ -25,7 +25,8 @@ import { cn } from "src/utilities/cn";
 import type { Metadata } from "next";
 import { getCachedGlobal } from "@/utilities/getGlobals";
 import { getSiteSettings } from "@/utilities/getSiteSettings";
-import Footer from "@/frontendComponents/sections/Footer";
+import { Footer } from "@/frontendComponents/sections/Footer";
+// import Footer from "@/frontendComponents/sections/Footer";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

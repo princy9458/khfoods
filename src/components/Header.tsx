@@ -205,14 +205,32 @@ export default function Header() {
     ? "bg-black/80 text-white shadow-lg backdrop-blur"
     : "bg-black/50 text-white";
 
+  // ----------- EDITED FUNCTION START -----------
+  // Logic updated: Only open menu if content exists, otherwise navigate
   const handleDesktopClick = (item: MegaCategory | "Home") => {
     setLangOpen(false); // Close lang menu if nav clicked
+    
     if (item === "Home") {
       setOpenMega(null);
+      router.push("/");
       return;
     }
-    setOpenMega((prev) => (prev === item ? null : item));
+
+    const config = megaConfigs[item as Exclude<MegaCategory, null>];
+    // Check if this item has any columns or resource links to show
+    const hasDropdownContent = config && (config.columns.length > 0 || config.resources.links.length > 0);
+
+    if (hasDropdownContent) {
+      setOpenMega((prev) => (prev === item ? null : item));
+    } else {
+      // If no dropdown content, close any open menu and navigate
+      setOpenMega(null);
+      if (config?.href) {
+        router.push(config.href);
+      }
+    }
   };
+  // ----------- EDITED FUNCTION END -----------
 
   // --- LANGUAGE SWITCH HANDLER ---
   const handleLanguageChange = (nextLocale: string) => {
@@ -248,6 +266,13 @@ export default function Header() {
             {menuItems.map((item) => {
               const isHome = item === "Home";
               const isOpen = item === openMega;
+              
+              // ----------- EDITED LOGIC START -----------
+              // Check specifically for dropdown content to decide UI
+              const config = item !== "Home" ? megaConfigs[item as Exclude<MegaCategory, null>] : null;
+              const hasDropdown = config ? (config.columns.length > 0 || config.resources.links.length > 0) : false;
+              // ----------- EDITED LOGIC END -----------
+
               return (
                 <button
                   key={item}
@@ -271,7 +296,8 @@ export default function Header() {
                     {item}
                   </span>
 
-                  {!isHome && (
+                  {/* ----------- EDITED: Only show chevron if dropdown exists ----------- */}
+                  {hasDropdown && (
                     <ChevronDownIcon
                       className={`w-4 h-4 transition-transform duration-200 ${
                         isMegaOpen ? "text-black/60" : "text-white/70"
@@ -512,9 +538,21 @@ function MobileMenu({
 
   // Desktop same items on Mobile (include URBAN too)
   const cats: Exclude<MegaCategory, null>[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US","STORE LOCATOR","WHOLESALE"];
+  const router = useRouter(); // Use router for navigation in mobile
 
-  const toggleCategory = (category: Exclude<MegaCategory, null>) => {
-    setOpen((prev) => (prev === category ? null : category));
+  const handleMobileClick = (category: Exclude<MegaCategory, null>) => {
+    const cfg = configs[category];
+    // Check if dropdown content exists
+    const hasDropdown = cfg && (cfg.columns.length > 0 || cfg.resources.links.length > 0);
+
+    if (hasDropdown) {
+        // Toggle dropdown
+        setOpen((prev) => (prev === category ? null : category));
+    } else {
+        // Navigate directly
+        onClose();
+        if (cfg.href) router.push(cfg.href);
+    }
   };
 
   return (
@@ -570,25 +608,30 @@ function MobileMenu({
         {cats.map((c) => {
           const cfg = configs[c];
           const expanded = open === c;
+          // Check for dropdown content to decide mobile UI too
+          const hasDropdown = cfg && (cfg.columns.length > 0 || cfg.resources.links.length > 0);
 
           return (
             <div key={c} className="border-b border-neutral-200/80 py-6">
               <button
                 type="button"
-                onClick={() => toggleCategory(c)}
+                onClick={() => handleMobileClick(c)}
                 className="w-full flex items-center justify-between text-left"
               >
                 <span className="text-[22px] font-semibold tracking-wide text-neutral-800">
                   {cfg.title}
                 </span>
-                <ChevronDownIcon
-                  className={`w-5 h-5 transition-transform duration-200 text-neutral-500 ${
-                    expanded ? "rotate-180" : ""
-                  }`}
-                />
+                {/* Only show chevron if dropdown content exists */}
+                {hasDropdown && (
+                    <ChevronDownIcon
+                    className={`w-5 h-5 transition-transform duration-200 text-neutral-500 ${
+                        expanded ? "rotate-180" : ""
+                    }`}
+                    />
+                )}
               </button>
 
-              {expanded && (
+              {hasDropdown && expanded && (
                 <div className="mt-5 space-y-8 transition-all duration-300">
                   
                   {/* Products (Flatten all links) */}
