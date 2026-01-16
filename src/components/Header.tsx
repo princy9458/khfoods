@@ -15,11 +15,25 @@ import { IoMdClose } from "react-icons/io";
 import { IoLanguageSharp } from "react-icons/io5"; // Added Language Icon
 import { property } from "zod";
 
+import { ChevronDown, Facebook, Twitter, Linkedin, Globe } from "lucide-react";
+
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Separator } from "@radix-ui/react-select";
+
+
 /* -------------------------------------------------------------------------- */
 /* TYPES                                                                      */
 /* -------------------------------------------------------------------------- */
 
-type MegaCategory = "HOME" | "ABOUT US" | "PRODUCTS" | "CONTACT US" | "STORE LOCATOR" | "WHOLESALE" | null;
+type MegaCategory = "HOME" | "ABOUT US" | "PRODUCTS" | "CONTACT US" | null;
+// type MegaCategory = "HOME" | "ABOUT US" | "PRODUCTS" | "CONTACT US" | "STORE LOCATOR" | "WHOLESALE" | null;
+
 
 type Section = {
   title: string;
@@ -120,25 +134,25 @@ const megaConfigs: Record<Exclude<MegaCategory, null>, MegaConfig> = {
     },
   },
 
-  "STORE LOCATOR": {
-    title: "STORE LOCATOR",
-    href: "/store-locator",
-    columns: [],
-    resources: {
-      title: "",
-      links: [],
-    },
-  },
+  // "STORE LOCATOR": {
+  //   title: "STORE LOCATOR",
+  //   href: "/store-locator",
+  //   columns: [],
+  //   resources: {
+  //     title: "",
+  //     links: [],
+  //   },
+  // },
 
-  WHOLESALE: {
-    title: "WHOLESALE",
-    href: "/wholesale",
-    columns: [],
-    resources: {
-      title: "",
-      links: [],
-    },
-  },
+  // WHOLESALE: {
+  //   title: "WHOLESALE",
+  //   href: "/wholesale",
+  //   columns: [],
+  //   resources: {
+  //     title: "",
+  //     links: [],
+  //   },
+  // },
 };
 
 
@@ -160,7 +174,9 @@ export default function Header() {
   const pathname = usePathname();
 
   // Added 'SHOP' to the main menu items for mobile/desktop visibility
-  const menuItems: (MegaCategory | "Home")[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US","STORE LOCATOR","WHOLESALE"];
+  const menuItems: (MegaCategory | "Home")[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US",];
+  // const menuItems: (MegaCategory | "Home")[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US","STORE LOCATOR","WHOLESALE"];
+
   const isMegaOpen = !!openMega;
 
   const activeConfig = useMemo(
@@ -244,7 +260,136 @@ export default function Header() {
 
   return (
     <>
+    
       <header className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${headerClass}`}>
+
+        <div className="w-full border-b bg-white">
+      {/* height like screenshot */}
+      <div className="mx-auto flex h-10 w-full max-w-7xl items-center justify-between px-4">
+        {/* LEFT / CENTER text */}
+        <div className="flex-1 text-start text-sm text-muted-foreground">
+          Welcome to SmartTech center!
+        </div>
+
+        {/* RIGHT LINKS */}
+        <div className="hidden flex-1 items-center justify-end gap-3 text-sm text-muted-foreground md:flex">
+          {/* <Link href="#" className="hover:text-foreground">
+            Login/Register
+          </Link> */}
+
+          <Separator  className="h-4" />
+
+          <Link href="#" className="hover:text-foreground">
+            Store Location
+          </Link>
+
+          <Separator  className="h-4" />
+
+       
+
+          <Separator  className="h-4" />
+
+          <Link href="#" className="hover:text-foreground">
+             Wholesale
+          </Link>
+
+          <Separator  className="h-4" />
+
+          {/* Language */}
+          <div className="relative hidden lg:block">
+              <button
+                type="button"
+                onClick={() => setLangOpen(!langOpen)}
+                className={`flex items-center gap-1 text-sm font-normal  tracking-wide transition-colors ${
+                    isMegaOpen ? "text-black hover:text-black/70" : "text-muted-foreground hover:text-[#FFD100]"
+                }`}
+              >
+                <IoLanguageSharp size={20} />
+                <span className="uppercase">{locale}</span>
+                <ChevronDownIcon className={`w-3 h-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {langOpen && (
+                <div className="absolute right-0 mt-3 w-32 bg-white text-black rounded shadow-xl py-2 z-50 border border-gray-100">
+                  <button
+                    disabled={isPending}
+                    onClick={() => handleLanguageChange('en')}
+                    className={`block w-full text-left px-4 py-2 hover:bg-gray-100 ${locale === 'en' ? 'font-bold text-[#FFD100]' : ''}`}
+                  >
+                    English
+                  </button>
+                  <button
+                    disabled={isPending}
+                    onClick={() => handleLanguageChange('zh')}
+                    className={`block w-full text-left px-4 py-2 hover:bg-gray-100 ${locale === 'zh' ? 'font-bold text-[#FFD100]' : ''}`}
+                  >
+                    繁體中文
+                  </button>
+                </div>
+              )}
+            </div>
+
+          <Separator  className="h-4" />
+
+          {/* Currency */}
+          {/* <DropdownMenu>
+            <DropdownMenuTrigger className="inline-flex items-center gap-1 hover:text-foreground">
+              (USD) Dollar <ChevronDown className="h-4 w-4 opacity-70" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>(USD) Dollar</DropdownMenuItem>
+              <DropdownMenuItem>(EUR) Euro</DropdownMenuItem>
+              <DropdownMenuItem>(INR) Rupee</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu> */}
+
+          <Separator  className="h-4" />
+
+          {/* Social icons */}
+          <div className="flex items-center gap-3">
+            <Link href="#" className="hover:text-foreground" aria-label="Facebook">
+              <Facebook className="h-4 w-4" />
+            </Link>
+            <Link href="#" className="hover:text-foreground" aria-label="Twitter">
+              <Twitter className="h-4 w-4" />
+            </Link>
+            <Link href="#" className="hover:text-foreground" aria-label="LinkedIn">
+              <Linkedin className="h-4 w-4" />
+            </Link>
+            <Link href="#" className="hover:text-foreground" aria-label="Website">
+              <Globe className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        {/* MOBILE right dropdown */}
+        <div className="flex flex-1 justify-end md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+              Menu <ChevronDown className="h-4 w-4 opacity-70" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem asChild>
+                <Link href="#">Login/Register</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#">Store Location</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#">FAQ</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#">Newsletter</Link>
+              </DropdownMenuItem>
+              <Separator className="my-1" />
+              <DropdownMenuItem>French</DropdownMenuItem>
+              <DropdownMenuItem>(USD) Dollar</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+    </div>
+
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Left Logo */}
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpenMega(null)}>
@@ -313,7 +458,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             
             {/* --- DESKTOP LANGUAGE SWITCHER --- */}
-            <div className="relative hidden lg:block">
+            {/* <div className="relative hidden lg:block">
               <button
                 type="button"
                 onClick={() => setLangOpen(!langOpen)}
@@ -344,7 +489,7 @@ export default function Header() {
                   </button>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <Link
               href="/shop"
@@ -446,7 +591,7 @@ function MegaMenu({ config, onClose }: { config: MegaConfig; onClose: () => void
   return (
     <div className="w-full text-[#222]">
       <div className="max-w-6xl mx-auto px-6 lg:px-0 pt-12 pb-8">
-        <div className="grid grid-cols-1 gap-y-10 lg:grid-cols-[0.8fr_1.2fr_1.2fr_1.2fr_1.3fr] lg:gap-x-10">
+        <div className="grid grid-cols-2 lg:gap-x-10">
           {/* LEFT title clickable */}
           <div className="flex items-start lg:items-center">
             <Link
@@ -460,9 +605,9 @@ function MegaMenu({ config, onClose }: { config: MegaConfig; onClose: () => void
 
           {/* columns */}
           {config.columns.map((col, idx) => (
-            <div key={idx} className="space-y-6 text-md">
+            <div key={idx} className="space-y-6 text-md flex justify-between " >
               {col.sections.map((section, si) => (
-                <div key={si}>
+                <div key={si} className="border-r pe-8">
                   <h3 className="mb-3 text-[14px] font-bold uppercase text-black tracking-wide">
                     {section.title}
                   </h3>
@@ -477,7 +622,7 @@ function MegaMenu({ config, onClose }: { config: MegaConfig; onClose: () => void
           ))}
 
           {/* resources */}
-          <div className="pt-6 lg:pt-0 lg:pl-10 lg:border-l lg:border-neutral-200 text-sm">
+          {/* <div className="pt-6 lg:pt-0 lg:pl-10 lg:border-l lg:border-neutral-200 text-sm">
             <h3 className="mb-3 text-[14px] font-bold uppercase text-black tracking-wide">
               {config.resources.title}
             </h3>
@@ -486,7 +631,7 @@ function MegaMenu({ config, onClose }: { config: MegaConfig; onClose: () => void
                 <MenuLink key={l.label} label={l.label} href={l.href} onClose={onClose} />
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -511,7 +656,7 @@ function MenuLink({ label, href, onClose }: { label: string; href: string; onClo
       <Link
         href={href}
         onClick={onClose}
-        className="inline-flex items-center text-[40px] text-neutral-700 hover:text-black transition-colors"
+        className="inline-flex items-center text-[18px] text-neutral-700 hover:text-black transition-colors"
       >
         {label}
       </Link>
@@ -537,7 +682,9 @@ function MobileMenu({
   const [open, setOpen] = useState<Exclude<MegaCategory, null> | null>(null);
 
   // Desktop same items on Mobile (include URBAN too)
-  const cats: Exclude<MegaCategory, null>[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US","STORE LOCATOR","WHOLESALE"];
+  const cats: Exclude<MegaCategory, null>[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US",];
+  // const cats: Exclude<MegaCategory, null>[] = ["HOME","ABOUT US","PRODUCTS","CONTACT US","STORE LOCATOR","WHOLESALE"];
+
   const router = useRouter(); // Use router for navigation in mobile
 
   const handleMobileClick = (category: Exclude<MegaCategory, null>) => {

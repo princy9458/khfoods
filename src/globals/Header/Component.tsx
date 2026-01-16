@@ -24,3 +24,4 @@ export async function Header({ disableCart }: { disableCart?: boolean }) {
     </div>
   );
 }
+
