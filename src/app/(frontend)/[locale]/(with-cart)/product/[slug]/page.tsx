@@ -5,12 +5,9 @@ import { getPayload } from "payload";
 import { ProductDetails } from "@/globals/(ecommerce)/Layout/ProductDetails/Component";
 import { type Locale } from "@/i18n/config";
 import config from "@payload-config";
-import ProductGallery from "@/frontendComponents/sections/ProductGallery";
-import ProductHeader from "@/frontendComponents/sections/ProductHeader";
-import ProductSpecs from "@/frontendComponents/sections/ProductSpecs";
-import RecommendedList from "@/frontendComponents/sections/RecommendedList";
-import SliderBrand from "@/frontendComponents/sections/SliderBrand";
-import NewsletterSection from "@/frontendComponents/sections/NewsletterSection";
+
+
+
 
 const ProductPage = async ({
   params,

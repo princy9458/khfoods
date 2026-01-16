@@ -121,11 +121,11 @@ const TestimonialsSectionOne = () => {
                 {/* Top row: avatar + name + quote mark */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-4">
-                    {/* <img
+                    <img
                       src={item.image}
                       alt={item.name}
                       className="w-14 h-14 rounded-full object-cover"
-                    /> */}
+                    />
                     <div>
                       <p className="text-sm font-semibold text-[#222222]">
                         {item.name}
