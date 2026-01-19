@@ -3,10 +3,14 @@
 import React, { useMemo, useState } from "react";
 import { PiMountainsFill } from "react-icons/pi";
 import { IoBusiness } from "react-icons/io5";
-import { FaMap, FaPlus, FaMinus } from "react-icons/fa"; // Added Icons
+import { FaMap, FaPlus, FaMinus } from "react-icons/fa"; // Added Plus/Minus icons
 import ProductTires from "./ProductTires";
 import Modelmap from "@/frontendComponents/Home/Modelmap";
 import SeriesSection from "@/frontendComponents/sections/SeriesSection";
+
+/* -------------------------------------------------------------------------- */
+/* TYPES                                    */
+/* -------------------------------------------------------------------------- */
 
 type SeriesKey = "UHP" | "FS" | "HP" | "P";
 
@@ -26,7 +30,7 @@ type FAQItem = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* CONSTANTS                                    */
+/* CONSTANTS                                  */
 /* -------------------------------------------------------------------------- */
 
 const TIRE_IMG =
@@ -35,31 +39,32 @@ const TIRE_IMG =
 const VECTOR_BG =
   "https://www.goodyearbike.com/wp-content/uploads/2025/01/WangerBazin2025TeamCamp-1011.jpg";
 
+// Yaha maine KH Food wale FAQs update kar diye hain
 const FAQS: FAQItem[] = [
   {
-    question: "Where can I buy these products domestically?",
+    question: "Do you ship KH Food products internationally?",
     answer:
-      "You can purchase our products directly through this website or visit one of our authorized local dealers listed in the 'Model Map' section.",
+      "Yes, we ship our premium namkeen and peanuts globally. We handle all export documentation to ensure smooth customs clearance in the USA, UK, Canada, and UAE.",
   },
   {
-    question: "What is the warranty period for domestic purchases?",
+    question: "How is the freshness maintained for export?",
     answer:
-      "All tires purchased through authorized domestic channels come with a 1-year manufacturing defect warranty from the date of purchase.",
+      "We use nitrogen-flushed, 3-layer packaging to ensure our roasted peanuts and snacks stay fresh and crunchy for up to 12 months during transit.",
   },
   {
-    question: "How do I choose the right tire series?",
+    question: "Is there a minimum order quantity (MOQ) for exports?",
     answer:
-      "For racing, choose UHP (Ultra High Performance). For training and endurance, choose HP (High Performance). For everyday use, the P series is the best value.",
+      "For international air cargo, the MOQ is 100kg. For sea freight, we accept LCL (Less than Container Load) orders starting from 1 pallet.",
   },
   {
-    question: "Do you offer free shipping within the country?",
+    question: "Are your products FSSAI and FDA compliant?",
     answer:
-      "Yes, we offer free standard ground shipping on all domestic orders over $50. Express shipping options are available at checkout.",
+      "Absolutely. KH Food products are manufactured in an FSSAI-certified facility and meet FDA standards for export to the United States.",
   },
 ];
 
 /* -------------------------------------------------------------------------- */
-/* UTILITY FUNCTION                                */
+/* UTILITY FUNCTION                               */
 /* -------------------------------------------------------------------------- */
 
 function classNames(...c: (string | false | undefined)[]) {
@@ -67,13 +72,12 @@ function classNames(...c: (string | false | undefined)[]) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* MAIN COMPONENT                                 */
+/* MAIN COMPONENT                                */
 /* -------------------------------------------------------------------------- */
 
 export default function InternationalPage() {
   const [openSeries, setOpenSeries] = useState<SeriesKey | null>("UHP");
 
-  // Products Data
   const products: Product[] = useMemo(
     () => [
       {
@@ -160,7 +164,7 @@ export default function InternationalPage() {
 
   return (
     <main className="w-full bg-white text-neutral-900">
-      {/* ========================== HERO ========================== */}
+      {/* ========================== HERO – INTERNATIONAL ========================== */}
       <section
         className="relative w-full overflow-hidden pt-[120px]"
         style={{
@@ -173,20 +177,20 @@ export default function InternationalPage() {
         <div className="mx-auto flex min-h-[260px] max-w-7xl items-center justify-center px-5 py-14 sm:px-6 md:min-h-[320px] md:py-20">
           <div className="text-center">
             <h1 className="text-3xl font-bold uppercase tracking-tight text-black md:text-5xl">
-              Domestic Range
+              International
             </h1>
             <div className="mt-3 flex items-center justify-center gap-2 text-sm text-black/70">
               <span className="hover:text-black">Home</span>
               <span className="text-black/40">›</span>
               <span className="hover:text-black">Products</span>
               <span className="text-black/40">›</span>
-              <span className="text-black">Domestic</span>
+              <span className="text-black">International</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================== PRODUCT GRID (Moved Here) ========================== */}
+      {/* ========================== PRODUCT GRID ========================== */}
       <ProductTires />
 
       {/* ========================== MODEL MAP ========================== */}
@@ -207,7 +211,7 @@ export default function InternationalPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-center">
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-neutral-500">
-                Domestic Performance
+                Global Performance
               </p>
 
               <h2 className="mt-4 text-4xl font-semibold tracking-tight">
@@ -215,16 +219,16 @@ export default function InternationalPage() {
               </h2>
 
               <p className="mt-6 text-neutral-700 leading-relaxed">
-                Engineered for local road conditions, Vector tires deliver
-                dependable performance, durability, and confidence on every
-                ride.
+                Engineired for international road conditions, Vector tires
+                deliver dependable performance, durability, and confidence
+                worldwide.
               </p>
             </div>
 
             <div className="relative h-[360px] rounded-[28px] overflow-hidden shadow-lg">
               <img
                 src={VECTOR_BG}
-                alt="Vector Domestic"
+                alt="Vector International"
                 className="object-cover w-full h-full"
               />
             </div>
@@ -232,7 +236,7 @@ export default function InternationalPage() {
         </div>
       </section>
 
-      {/* ========================== FAQ SECTION (Added Here) ========================== */}
+      {/* ========================== FAQ SECTION ========================== */}
       <FAQSection />
     </main>
   );
