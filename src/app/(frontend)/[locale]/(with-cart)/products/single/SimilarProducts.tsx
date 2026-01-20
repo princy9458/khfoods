@@ -17,46 +17,46 @@ const categories = ["All Tires", "Gravel", "Mountain", "Uncategorized"];
 const products = [
   {
     id: 1,
-    name: "Eagle F1R Z29 Aero",
+    name: "Roasted Peanuts: 8 Packs",
     img: "/2Q6A4622-3-scaled.jpg",
     soldOut: false,
   },
   {
     id: 2,
-    name: "Vector Sport",
+    name: "Roasted Peanuts: 14 Packs",
     img: "/2Q6A4963.jpg",
     soldOut: true,
   },
   {
     id: 3,
-    name: "Wrangler MTR",
+    name: " Roasted Peanuts: 21 Packs",
     img: "/2Q6A4971.jpg",
     soldOut: true,
   },
   {
     id: 4,
-    name: "Peak",
+    name: "Roasted Peanuts: 6 Packs",
     img: "/6-bags.jpg",
     soldOut: true,
   },
-  {
-    id: 5,
-    name: "County",
-   img: "/2Q6A4622-3-scaled.jpg",
-    soldOut: true,
-  },
-  {
-    id: 6,
-    name: "County 2",
-    img: "/2Q6A4971.jpg",
-    soldOut: true,
-  },
-  {
-    id: 7,
-    name: "County 3",
-    img: "/6-bags.jpg",
-    soldOut: true,
-  },
+  // {
+  //   id: 5,
+  //   name: "County",
+  //  img: "/2Q6A4622-3-scaled.jpg",
+  //   soldOut: true,
+  // },
+  // {
+  //   id: 6,
+  //   name: "County 2",
+  //   img: "/2Q6A4971.jpg",
+  //   soldOut: true,
+  // },
+  // {
+  //   id: 7,
+  //   name: "County 3",
+  //   img: "/6-bags.jpg",
+  //   soldOut: true,
+  // },
   
 ];
 
@@ -70,7 +70,7 @@ export default function SimpleProductPage() {
         {/* Title row */}
         <div className="mb-6 flex items-center gap-4">
           <h2 className="text-2xl md:text-[28px] font-semibold  uppercase">
-         Similar Products.
+         Similar Products
 
           </h2>
           <div className="h-px flex-1 bg-slate-300" />
@@ -119,34 +119,34 @@ export default function SimpleProductPage() {
 
                       {/* HOVER ICON STACK */}
                       <div className="pointer-events-none absolute right-3 top-6 flex flex-col items-center gap-3 translate-x-3 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                        <CircleIcon>
+                        {/* <CircleIcon>
                           <Star className="h-4 w-4 text-slate-700" />
-                        </CircleIcon>
-                        <CircleIcon>
+                        </CircleIcon> */}
+                        {/* <CircleIcon>
                           <Eye className="h-4 w-4 text-slate-700" />
-                        </CircleIcon>
-                        <CircleIcon>
+                        </CircleIcon> */}
+                        {/* <CircleIcon>
                           <Shuffle className="h-4 w-4 text-slate-700" />
-                        </CircleIcon>
+                        </CircleIcon> */}
                       </div>
 
-                      <div className="pointer-events-none absolute right-3 bottom-0 flex flex-col items-center gap-3 translate-x-3 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                      {/* <div className="pointer-events-none absolute right-3 bottom-0 flex flex-col items-center gap-3 translate-x-3 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                         <CircleIcon big>
                           <IoMdCheckmarkCircleOutline className="h-4 w-4 text-black" />
                         </CircleIcon>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* RATING + NAME */}
                     <div className="w-full text-start">
-                      <div className="mt-3 flex items-center justify-start text-[11px]">
+                      {/* <div className="mt-3 flex items-center justify-start text-[11px]">
                         <span className="text-[14px] leading-none text-black">
                           ★★★★★
                         </span>
                         <span className="ml-1 text-[11px] text-gray-400">
                           (0)
                         </span>
-                      </div>
+                      </div> */}
 
                       <h3 className="mt-1 text-[16px] font-medium text-slate-800">
                         {p.name}

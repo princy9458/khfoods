@@ -35,28 +35,45 @@ const TIRE_IMG =
 const VECTOR_BG =
   "https://www.goodyearbike.com/wp-content/uploads/2025/01/WangerBazin2025TeamCamp-1011.jpg";
 
+
+
+
+  
+/* ======================= UPDATED FOOD FAQs ONLY ======================= */
+
 const FAQS: FAQItem[] = [
   {
-    question: "Where can I buy these products domestically?",
+    question: "What are international food products?",
     answer:
-      "You can purchase our products directly through this website or visit one of our authorized local dealers listed in the 'Model Map' section.",
+      "International food products are food items that are sourced or inspired from global markets and meet international quality standards.",
   },
   {
-    question: "What is the warranty period for domestic purchases?",
+    question: "Are international food products safe to consume?",
     answer:
-      "All tires purchased through authorized domestic channels come with a 1-year manufacturing defect warranty from the date of purchase.",
+      "Yes, all international food products go through quality checks and are safe for consumption when used before the expiry date.",
   },
   {
-    question: "How do I choose the right tire series?",
+    question: "Do international food products follow food safety standards?",
     answer:
-      "For racing, choose UHP (Ultra High Performance). For training and endurance, choose HP (High Performance). For everyday use, the P series is the best value.",
+      "Yes, these products follow international food safety and quality guidelines to ensure freshness and hygiene.",
   },
   {
-    question: "Do you offer free shipping within the country?",
+    question: "How should international food products be stored?",
     answer:
-      "Yes, we offer free standard ground shipping on all domestic orders over $50. Express shipping options are available at checkout.",
+      "Store the products in a cool, dry place. Always follow the storage instructions mentioned on the packaging.",
+  },
+  {
+    question: "Do international food products have expiry dates?",
+    answer:
+      "Yes, every international food product comes with a clearly mentioned expiry date on the package.",
+  },
+  {
+    question: "Can I order international food products online?",
+    answer:
+      "Yes, you can order international food products online through our website and get them delivered to your location.",
   },
 ];
+
 
 /* -------------------------------------------------------------------------- */
 /* UTILITY FUNCTION                                */
@@ -173,66 +190,102 @@ export default function InternationalPage() {
         <div className="mx-auto flex min-h-[260px] max-w-7xl items-center justify-center px-5 py-14 sm:px-6 md:min-h-[320px] md:py-20">
           <div className="text-center">
             <h1 className="text-3xl font-bold uppercase tracking-tight text-black md:text-5xl">
-              Domestic Range
+              Domestic Products
             </h1>
-            <div className="mt-3 flex items-center justify-center gap-2 text-sm text-black/70">
-              <span className="hover:text-black">Home</span>
-              <span className="text-black/40">›</span>
-              <span className="hover:text-black">Products</span>
-              <span className="text-black/40">›</span>
-              <span className="text-black">Domestic</span>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ========================== PRODUCT GRID (Moved Here) ========================== */}
       <ProductTires />
+{/* ==============================Nutrition Section================================== */}
+ <section className="py-24 flex justify-center">
+        <section className="nf" aria-label="Nutrition Facts">
+          <header className="nf__left">
+            <h2 className="nf__title">Nutrition Facts</h2>
 
-      {/* ========================== MODEL MAP ========================== */}
-      <Modelmap />
-
-      {/* ========================== VECTOR STORY ========================== */}
-      <section className="relative py-16 md:py-24">
-        <div className="absolute inset-0">
-          <img
-            src={VECTOR_BG}
-            alt="Vector story"
-            className="object-cover w-full h-full"
-          />
-          <div className="absolute inset-0 bg-white/85" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 items-center">
-            <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-neutral-500">
-                Domestic Performance
-              </p>
-
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight">
-                Vector
-              </h2>
-
-              <p className="mt-6 text-neutral-700 leading-relaxed">
-                Engineered for local road conditions, Vector tires deliver
-                dependable performance, durability, and confidence on every
-                ride.
-              </p>
+            <div className="nf__meta">
+              <div>Serving Size <strong>1 oz (28g)</strong></div>
+              <div>Servings Per Container <strong>6</strong></div>
             </div>
 
-            <div className="relative h-[360px] rounded-[28px] overflow-hidden shadow-lg">
-              <img
-                src={VECTOR_BG}
-                alt="Vector Domestic"
-                className="object-cover w-full h-full"
-              />
+            <div className="nf__divider nf__divider--thick" />
+
+            <div className="nf__calories">
+              <div className="nf__caloriesTop">
+                <span className="nf__caloriesLabel">Calories</span>
+                <span className="nf__caloriesValue">170</span>
+              </div>
+              <div className="nf__caloriesSub">Calories from Fat 110</div>
+            </div>
+
+            <div className="nf__divider" />
+
+            <p className="nf__footnote">
+              *Percent Daily Value (DV) are based on a 2,000 calorie diet.
+            </p>
+          </header>
+
+          <div className="nf__right">
+            <div className="nf__cols">
+              <div className="nf__col">
+                <div className="nf__colHead">
+                  <span>Amount Per Serving</span>
+                  <span className="nf__dvHead">%DV*</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Total Fat <span className="nf__amt">13g</span></span>
+                  <span className="nf__dv">21%</span>
+                </div>
+
+                <div className="nf__row nf__row--sub">
+                  <span>Saturated Fat <span className="nf__amt">2g</span></span>
+                  <span className="nf__dv">9%</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Sodium <span className="nf__amt">120mg</span></span>
+                  <span className="nf__dv">5%</span>
+                </div>
+              </div>
+
+              <div className="nf__col">
+                <div className="nf__colHead">
+                  <span>Amount Per Serving</span>
+                  <span className="nf__dvHead">%DV*</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Total Carb <span className="nf__amt">6g</span></span>
+                  <span className="nf__dv">2%</span>
+                </div>
+
+                <div className="nf__row nf__row--sub">
+                  <span>Fiber <span className="nf__amt">3g</span></span>
+                  <span className="nf__dv">11%</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Protein <span className="nf__amt">7g</span></span>
+                  <span className="nf__dv"></span>
+                </div>
+              </div>
+            </div>
+
+            <div className="nf__divider nf__divider--thick" />
+
+            <div className="nf__vitamins">
+              <span>Vitamin A 4%</span> • <span>Vitamin C 0%</span> •
+              <span>Calcium 0%</span> • <span>Iron 0%</span>
             </div>
           </div>
-        </div>
+        </section>
       </section>
 
-      {/* ========================== FAQ SECTION (Added Here) ========================== */}
+
+
+      
+      <Modelmap />
       <FAQSection />
     </main>
   );
@@ -247,10 +300,7 @@ function FAQSection() {
     <section className="bg-neutral-50 py-24 border-t border-neutral-200">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
-          <span className="text-xs font-bold tracking-widest text-neutral-500 uppercase">
-            Support
-          </span>
-          <h2 className="text-3xl font-bold text-neutral-900 mt-2">
+          <h2 className="text-3xl font-bold text-neutral-900">
             Frequently Asked Questions
           </h2>
         </div>
@@ -269,32 +319,18 @@ function Accordion({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div
-      className={`border rounded-xl transition-all duration-200 bg-white ${
-        isOpen ? "border-neutral-800 shadow-sm" : "border-neutral-200"
-      }`}
-    >
+    <div className="border rounded-xl bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-5 text-left"
       >
-        <span className="font-semibold text-neutral-900">{question}</span>
-        {isOpen ? (
-          <FaMinus size={14} className="text-neutral-900 flex-shrink-0" />
-        ) : (
-          <FaPlus size={14} className="text-neutral-500 flex-shrink-0" />
-        )}
+        <span className="font-semibold">{question}</span>
+        {isOpen ? <FaMinus size={14} /> : <FaPlus size={14} />}
       </button>
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <p className="p-5 pt-0 text-neutral-600 text-sm leading-relaxed border-t border-neutral-100 mt-2">
-          {answer}
-        </p>
-      </div>
+      {isOpen && (
+        <p className="p-5 pt-0 text-sm text-neutral-600">{answer}</p>
+      )}
     </div>
   );
 }

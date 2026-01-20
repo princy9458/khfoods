@@ -621,10 +621,119 @@ function SlimAccordion({ title, children }: SlimAccordionProps) {
             </div>
           </div>
         </div>
-      </section>
+
+
+        {/* <section className="nf" aria-label="Nutrition Facts">
+  <header className="nf__left">
+    <h2 className="nf__title">Nutrition Facts a</h2>
+
+    <div className="nf__meta">
+      <div>Serving Size <strong>1 oz (28g)</strong></div>
+      <div>Servings Per Container <strong>6</strong></div>
+    </div>
+
+    <div className="nf__divider nf__divider--thick" aria-hidden="true"></div>
+
+    <div className="nf__calories">
+      <div className="nf__caloriesTop">
+        <span className="nf__caloriesLabel">Calories</span>
+        <span className="nf__caloriesValue">170</span>
+      </div>
+      <div className="nf__caloriesSub">Calories from Fat 110</div>
+    </div>
+
+    <div className="nf__divider" aria-hidden="true"></div>
+
+    <p className="nf__footnote">
+      *Percent Daily Value (DV) are based on a 2,000 calorie diet.
+    </p>
+  </header>
+
+  <div className="nf__right">
+    <div className="nf__cols" role="group" aria-label="Nutrients">
+      
+      <div className="nf__col" role="table" aria-label="Left nutrient column">
+        <div className="nf__colHead" role="row">
+          <span>Amount Per Serving</span>
+          <span className="nf__dvHead">%DV*</span>
+        </div>
+
+        <div className="nf__row nf__row--major" role="row">
+          <span>Total Fat <span className="nf__amt">13g</span></span>
+          <span className="nf__dv">21%</span>
+        </div>
+        <div className="nf__row nf__row--sub" role="row">
+          <span>Saturated Fat <span className="nf__amt">2g</span></span>
+          <span className="nf__dv">9%</span>
+        </div>
+        <div className="nf__row nf__row--sub" role="row">
+          <span>Trans Fat <span className="nf__amt">0g</span></span>
+          <span className="nf__dv">&nbsp;</span>
+        </div>
+
+        <div className="nf__row nf__row--major" role="row">
+          <span>Cholest. <span className="nf__amt">0mg</span></span>
+          <span className="nf__dv">0%</span>
+        </div>
+        <div className="nf__row nf__row--major" role="row">
+          <span>Sodium <span className="nf__amt">120mg</span></span>
+          <span className="nf__dv">5%</span>
+        </div>
+      </div>
 
       
-      {/* <section className="bg-white border border-gray-200 rounded-[18px] shadow-sm mb-24 overflow-hidden">
+      <div className="nf__col" role="table" aria-label="Right nutrient column">
+        <div className="nf__colHead" role="row">
+          <span>Amount Per Serving</span>
+          <span className="nf__dvHead">%DV*</span>
+        </div>
+
+        <div className="nf__row nf__row--major" role="row">
+          <span>Total Carb. <span className="nf__amt">6g</span></span>
+          <span className="nf__dv">2%</span>
+        </div>
+        <div className="nf__row nf__row--sub" role="row">
+          <span>Fiber <span className="nf__amt">3g</span></span>
+          <span className="nf__dv">11%</span>
+        </div>
+        <div className="nf__row nf__row--sub" role="row">
+          <span>Sugars <span className="nf__amt">1g</span></span>
+          <span className="nf__dv">&nbsp;</span>
+        </div>
+
+        <div className="nf__row nf__row--major" role="row">
+          <span>Protein <span className="nf__amt">7g</span></span>
+          <span className="nf__dv">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="nf__divider nf__divider--thick" aria-hidden="true"></div>
+
+    <div className="nf__vitamins" aria-label="Vitamins and minerals">
+      <span>Vitamin A 4%</span>
+      <span className="nf__dot" aria-hidden="true">•</span>
+      <span>Vitamin C 0%</span>
+      <span className="nf__dot" aria-hidden="true">•</span>
+      <span>Calcium 0%</span>
+      <span className="nf__dot" aria-hidden="true">•</span>
+      <span>Iron 0%</span>
+    </div>
+  </div>
+        </section> */}
+
+      </section>
+
+{/* ===========================Nutrition Section==================== */}
+
+
+
+
+
+
+
+      
+      {/* <section classNameName="bg-white border border-gray-200 rounded-[18px] shadow-sm mb-24 overflow-hidden">
         <div className="px-6 py-5 border-b border-gray-200 bg-gray-50/50">
           <h2 className="text-md md:text-xl font-bold uppercase tracking-wider text-gray-900">
             Range Overview 1
@@ -650,7 +759,7 @@ function SlimAccordion({ title, children }: SlimAccordionProps) {
                   Description
                 </h2>
                 <div>
-                  <h4 className="text-lg font-medium">14 Packs, 6 oz each</h4>
+                  <h4 className="text-lg font-medium">14 Packs, 6 oz each </h4>
                    <ul className="list-disc pl-6 ">
                      <li>Plastic container/lid with a sealed film to ensure freshness.</li>
                      <li>Non-GMO Verified</li>
@@ -677,14 +786,98 @@ function SlimAccordion({ title, children }: SlimAccordionProps) {
           </div>
 
           {/* lifestyle image */}
-          <div className="rounded-[26px] overflow-hidden border border-neutral-200 shadow-sm bg-[#020617]">
+          {/* <div className="rounded-[26px] overflow-hidden border border-neutral-200 shadow-sm bg-[#020617]">
             <img
               src="https://khfood.com/wp-content/uploads/2019/12/Image-1.jpg"
               alt="Gravel bike with Peak tyres"
               className="w-full h-full object-cover"
             />
+          </div> */}
+
+        <section className="py-24 flex justify-center">
+        <section className="nf" aria-label="Nutrition Facts">
+          <header className="nf__left">
+            <h2 className="nf__title">Nutrition Facts</h2>
+
+            <div className="nf__meta">
+              <div>Serving Size <strong>1 oz (28g)</strong></div>
+              <div>Servings Per Container <strong>6</strong></div>
+            </div>
+
+            <div className="nf__divider nf__divider--thick" />
+
+            <div className="nf__calories">
+              <div className="nf__caloriesTop">
+                <span className="nf__caloriesLabel">Calories</span>
+                <span className="nf__caloriesValue">170</span>
+              </div>
+              <div className="nf__caloriesSub">Calories from Fat 110</div>
+            </div>
+
+            <div className="nf__divider" />
+
+            <p className="nf__footnote">
+              *Percent Daily Value (DV) are based on a 2,000 calorie diet.
+            </p>
+          </header>
+
+          <div className="nf__right">
+            <div className="nf__cols">
+              <div className="nf__col">
+                <div className="nf__colHead">
+                  <span>Amount Per Serving</span>
+                  <span className="nf__dvHead">%DV*</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Total Fat <span className="nf__amt">13g</span></span>
+                  <span className="nf__dv">21%</span>
+                </div>
+
+                <div className="nf__row nf__row--sub">
+                  <span>Saturated Fat <span className="nf__amt">2g</span></span>
+                  <span className="nf__dv">9%</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Sodium <span className="nf__amt">120mg</span></span>
+                  <span className="nf__dv">5%</span>
+                </div>
+              </div>
+
+              <div className="nf__col">
+                <div className="nf__colHead">
+                  <span>Amount Per Serving</span>
+                  <span className="nf__dvHead">%DV*</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Total Carb <span className="nf__amt">6g</span></span>
+                  <span className="nf__dv">2%</span>
+                </div>
+
+                <div className="nf__row nf__row--sub">
+                  <span>Fiber <span className="nf__amt">3g</span></span>
+                  <span className="nf__dv">11%</span>
+                </div>
+
+                <div className="nf__row nf__row--major">
+                  <span>Protein <span className="nf__amt">7g</span></span>
+                  <span className="nf__dv"></span>
+                </div>
+              </div>
+            </div>
+
+            <div className="nf__divider nf__divider--thick" />
+
+            <div className="nf__vitamins">
+              <span>Vitamin A 4%</span> • <span>Vitamin C 0%</span> •
+              <span>Calcium 0%</span> • <span>Iron 0%</span>
+            </div>
           </div>
         </section>
+      </section>
+ </section>
 
      
       {openZoom && (
@@ -710,6 +903,8 @@ function SlimAccordion({ title, children }: SlimAccordionProps) {
         
 
         <SimilarProducts/>
+
+
 
     </>
   );

@@ -7,7 +7,7 @@ import NewsSectionCopy from "@/frontendComponents/Home/NewsSectionCopy";
 import OurWork from "@/frontendComponents/Home/OurWork";
 import ProductSection from "@/frontendComponents/Home/ProductSection";
 import ProductSectionCopy from "@/frontendComponents/Home/ProductSectionCopy";
-// import SliderBrand from "@/frontendComponents/Home/SliderBrand";
+import SliderBrand from "@/frontendComponents/Home/SliderBrand";
 import NewOneSection from "@/frontendComponents/Home/NewOneSection"
 import TestimonialsSection from "@/frontendComponents/Home/TestimonialsSection";
 import BlogSection from "@/frontendComponents/sections/BlogSection";
@@ -40,7 +40,7 @@ const HomePage = async () => {
       <TestimonialsSection />
       <BlogSection />
       <OurStorySection/>
-      {/* <SliderBrand /> */}
+      <SliderBrand />
       <NewOneSection />
       {/* <NewsLatter /> */}
     </main>

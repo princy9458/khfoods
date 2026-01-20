@@ -310,3 +310,337 @@ html[data-theme="light"] {
 body{
     font-family: "Montserrat", sans-serif;
 }
+
+
+
+
+
+  .nf {
+    --nf-border: #000;
+    --nf-text: #000;
+    --nf-bg: #fff;
+
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    max-width: 980px;
+    background: var(--nf-bg);
+    color: var(--nf-text);
+    border: 3px solid var(--nf-border);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Left block */
+  .nf__left {
+    padding: 14px 14px 10px;
+    border-right: 3px solid var(--nf-border);
+  }
+
+  .nf__title {
+    margin: 0 0 10px;
+    font-size: 44px;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+
+  .nf__meta {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .nf__meta strong { font-weight: 800; }
+
+  .nf__calories {
+    margin-top: 10px;
+  }
+
+  .nf__caloriesTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .nf__caloriesLabel {
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .nf__caloriesValue {
+    font-size: 34px;
+    font-weight: 900;
+  }
+
+  .nf__caloriesSub {
+    margin-top: 2px;
+    font-size: 12px;
+  }
+
+  .nf__footnote {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* Right block */
+  .nf__right {
+    padding: 10px 14px;
+  }
+
+  .nf__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 3px solid var(--nf-border);
+  }
+
+  .nf__col {
+    border-left: 1px solid var(--nf-border);
+  }
+  .nf__col:first-child { border-left: 0; }
+
+  .nf__colHead {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: 800;
+    border-bottom: 3px solid var(--nf-border);
+  }
+
+  .nf__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--nf-border);
+    font-size: 16px;
+  }
+
+  .nf__row--major {
+    font-weight: 900;
+  }
+
+  .nf__row--sub {
+    font-weight: 600;
+    padding-left: 18px; /* indent like a real label */
+  }
+
+  .nf__amt {
+    font-weight: 700;
+  }
+
+  .nf__dvHead,
+  .nf__dv {
+    min-width: 44px;
+    text-align: right;
+    font-weight: 900;
+  }
+
+  .nf__divider {
+    height: 0;
+    border-top: 1px solid var(--nf-border);
+    margin: 10px 0;
+  }
+
+  .nf__divider--thick {
+    border-top-width: 8px;
+    margin: 12px 0;
+  }
+
+  .nf__vitamins {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    align-items: center;
+  }
+
+  .nf__dot {
+    font-weight: 900;
+  }
+
+  /* Responsive: stack into one column */
+  @media (max-width: 760px) {
+    .nf {
+      grid-template-columns: 1fr;
+    }
+    .nf__left {
+      border-right: 0;
+      border-bottom: 3px solid var(--nf-border);
+    }
+    .nf__cols {
+      grid-template-columns: 1fr;
+    }
+    .nf__col {
+      border-left: 0;
+      border-top: 1px solid var(--nf-border);
+    }
+    .nf__col:first-child { border-top: 0; }
+  }
+  
+  .nf {
+    --nf-border: #000;
+    --nf-text: #000;
+    --nf-bg: #fff;
+
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    max-width: 980px;
+    background: var(--nf-bg);
+    color: var(--nf-text);
+    border: 3px solid var(--nf-border);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Left block */
+  .nf__left {
+    padding: 14px 14px 10px;
+    border-right: 3px solid var(--nf-border);
+  }
+
+  .nf__title {
+    margin: 0 0 10px;
+    font-size: 44px;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+
+  .nf__meta {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .nf__meta strong { font-weight: 800; }
+
+  .nf__calories {
+    margin-top: 10px;
+  }
+
+  .nf__caloriesTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .nf__caloriesLabel {
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .nf__caloriesValue {
+    font-size: 34px;
+    font-weight: 900;
+  }
+
+  .nf__caloriesSub {
+    margin-top: 2px;
+    font-size: 12px;
+  }
+
+  .nf__footnote {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* Right block */
+  .nf__right {
+    padding: 10px 14px;
+  }
+
+  .nf__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 3px solid var(--nf-border);
+  }
+
+  .nf__col {
+    border-left: 1px solid var(--nf-border);
+  }
+  .nf__col:first-child { border-left: 0; }
+
+  .nf__colHead {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: 800;
+    border-bottom: 3px solid var(--nf-border);
+  }
+
+  .nf__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--nf-border);
+    font-size: 16px;
+  }
+
+  .nf__row--major {
+    font-weight: 900;
+  }
+
+  .nf__row--sub {
+    font-weight: 600;
+    padding-left: 18px; /* indent like a real label */
+  }
+
+  .nf__amt {
+    font-weight: 700;
+  }
+
+  .nf__dvHead,
+  .nf__dv {
+    min-width: 44px;
+    text-align: right;
+    font-weight: 900;
+  }
+
+  .nf__divider {
+    height: 0;
+    border-top: 1px solid var(--nf-border);
+    margin: 10px 0;
+  }
+
+  .nf__divider--thick {
+    border-top-width: 8px;
+    margin: 12px 0;
+  }
+
+  .nf__vitamins {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    align-items: center;
+  }
+
+  .nf__dot {
+    font-weight: 900;
+  }
+
+  /* Responsive: stack into one column */
+  @media (max-width: 760px) {
+    .nf {
+      grid-template-columns: 1fr;
+    }
+    .nf__left {
+      border-right: 0;
+      border-bottom: 3px solid var(--nf-border);
+    }
+    .nf__cols {
+      grid-template-columns: 1fr;
+    }
+    .nf__col {
+      border-left: 0;
+      border-top: 1px solid var(--nf-border);
+    }
+    .nf__col:first-child { border-top: 0; }
+  }

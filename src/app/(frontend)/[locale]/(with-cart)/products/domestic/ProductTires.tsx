@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Heart, Eye, Shuffle, Check } from "lucide-react";
+// import Link from "next/link";
+
 
 /* -------------------------------------------------------------------------- */
 /* TYPES                                    */
@@ -14,7 +16,7 @@ type CategoryKey =
   | "8 Pack"
   | "14 pack"
   | "21 pack"
-  | "6 pack";
+  | "6 pack"; 
 
 type Product = {
   category: Exclude<CategoryKey, "All">;
@@ -97,37 +99,48 @@ export default function BrowseKHFoodProducts() {
 /* PRODUCT CARD                                  */
 /* -------------------------------------------------------------------------- */
 
+import Link from "next/link";
+
 function FoodCard({ p }: { p: Product }) {
   return (
-    <div className="relative rounded-[22px] border bg-white overflow-hidden group">
-      <div
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20
-        flex flex-col gap-3
-        opacity-0 translate-x-4
-        transition-all duration-300
-        group-hover:opacity-100 group-hover:translate-x-0"
-      >
-        <IconBtn icon={<Heart size={18} />} />
-        <IconBtn icon={<Eye size={18} />} />
-        <IconBtn icon={<Shuffle size={18} />} />
-        <IconBtn icon={<Check size={18} />} />
-      </div>
+    <Link href="/products/single" className="block">
+      <div className="relative rounded-[22px] border bg-white overflow-hidden group cursor-pointer">
 
-      <div className="p-6">
-        <span className="text-xs font-semibold bg-neutral-900 text-white px-3 py-1 rounded-full">
-          {p.category}
-        </span>
-
-        <div className="mt-6 flex justify-center">
-          <img src={p.image} alt={p.name} className="h-48 object-contain" />
+        {/* Icons */}
+        <div
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20
+          flex flex-col gap-3
+          opacity-0 translate-x-4
+          transition-all duration-300
+          group-hover:opacity-100 group-hover:translate-x-0"
+          onClick={(e) => e.preventDefault()}
+        >
+          {/* <IconBtn icon={<Heart size={18} />} /> */}
+          {/* <IconBtn icon={<Eye size={18} />} /> */}
+          {/* <IconBtn icon={<Shuffle size={18} />} /> */}
+          {/* <IconBtn icon={<Check size={18} />} /> */}
         </div>
 
-        <h3 className="mt-4 text-lg font-semibold">{p.name}</h3>
-        <p className="mt-1 font-semibold">{p.price}</p>
+        <div className="p-6">
+          <span className="text-xs font-semibold bg-neutral-900 text-white px-3 py-1 rounded-full">
+            {p.category}
+          </span>
+
+          <div className="mt-6 flex justify-center">
+            <img src={p.image} alt={p.name} className="h-48 object-contain" />
+          </div>
+
+          <h3 className="mt-4 text-lg font-semibold">{p.name}</h3>
+          <p className="mt-1 font-semibold">{p.price}</p>
+        </div>
+
       </div>
-    </div>
+    </Link>
   );
 }
+
+
+
 
 /* -------------------------------------------------------------------------- */
 /* ICON BUTTON                                   */
