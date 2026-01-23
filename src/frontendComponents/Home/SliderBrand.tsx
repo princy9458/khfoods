@@ -14,12 +14,11 @@ import {
 import { useTranslations } from "next-intl";
 
 const brands = [
-  { img: "assets/Image/khfoodImage/logo1.jpg", alt: "Highlow" },
-  { img: "assets/Image/khfoodImage/logo2.jpg", alt: "Boosst" },
-  { img: "assets/Image/khfoodImage/logo3.jpg", alt: "Emajine" },
-  { img: "assets/Image/khfoodImage/logo4.jpg", alt: "BEBY.CO" },
-  { img: "assets/Image/khfoodImage/logo5.jpg", alt: "GlowUP" },
-  
+  { img: "/assets/Image/khfoodImage/logo1.jpg", alt: "Highlow" },
+  { img: "/assets/Image/khfoodImage/logo2.jpg", alt: "Boosst" },
+  { img: "/assets/Image/khfoodImage/logo3.jpg", alt: "Emajine" },
+  { img: "/assets/Image/khfoodImage/logo4.jpg", alt: "BEBY.CO" },
+  { img: "/assets/Image/khfoodImage/logo5.jpg", alt: "GlowUP" },
 ];
 
 const SliderBrand = () => {
@@ -53,17 +52,17 @@ const SliderBrand = () => {
     },
   ];
   return (
-    <div className="bg-white py-24">
-      <div className="container-xl mx-auto">
+    <div className="bg-white md:py-20 py-8">
+      <div className="container mx-auto">
         {/* ---------- Top Features ---------- */}
 
         {/* ---------- Bottom Brand Slider ---------- */}
-        <div className="pt-8">
+        <div className="pt-5">
           <Swiper
             slidesPerView={5}
-            spaceBetween={30}
+            spaceBetween={20}
             loop={true}
-            navigation={true}
+            // navigation={true}
             modules={[Navigation]}
             breakpoints={{
               320: { slidesPerView: 3 },

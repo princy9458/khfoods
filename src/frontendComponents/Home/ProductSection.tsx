@@ -58,7 +58,6 @@ const ProductSection: React.FC = () => {
     <section className="w-full bg-white py-16">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
-
           {/* LEFT PROMO CARD (NO CHANGE) */}
           <div className="w-full lg:w-[42%] flex-shrink-0 relative overflow-hidden rounded-3xl bg-black text-white min-h-[500px]">
             <img
@@ -93,7 +92,6 @@ const ProductSection: React.FC = () => {
                 <Link key={product.id} href="/products/single">
                   <article className="bg-[#f7f7f7] rounded-xl overflow-hidden flex flex-col h-full group cursor-pointer">
 
-                    {/* Image */}
                     <div className="relative pt-4 pb-2 px-4">
                       {product.quantity && (
                         <span className="absolute left-3 top-3 rounded-full bg-[#FFD100] text-[10px] font-bold px-2 py-1">
@@ -134,7 +132,6 @@ const ProductSection: React.FC = () => {
               );
             })}
           </div>
-
         </div>
       </div>
     </section>
